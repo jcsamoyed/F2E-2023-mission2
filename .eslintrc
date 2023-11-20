@@ -1,0 +1,39 @@
+{
+  "root": true,
+  "extends": [
+    "@nuxtjs/eslint-config-typescript"
+  ],
+  "rules": {
+    // 縮排
+    "indent": [
+      "error",
+      2
+    ],
+    // 單引號
+    "quotes": [
+      "error",
+      "single"
+    ],
+    // 句尾分號
+    "semi": [
+      "error",
+      "always"
+    ],
+    // 函式括號前不空格
+    "space-before-function-paren": [
+      "error",
+      "never"
+    ],
+    // 允許 console.log
+    "no-console": "off",
+    // 允許元件名稱使用單字
+    "vue/multi-word-component-names": "off",
+    // 允許多個根節點
+    "vue/no-multiple-template-root": "off",
+    // 僅在多行時允許尾隨逗號
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ]
+  }
+}
