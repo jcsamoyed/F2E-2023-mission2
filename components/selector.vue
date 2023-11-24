@@ -21,6 +21,9 @@
         </option>
       </select>
     </div>
+
+    <!-- 清除按鈕 -->
+    <Button text="清除" image-name="reset.svg" @click="resetAll" />
   </section>
 </template>
 
@@ -46,6 +49,10 @@ const areaSelected = useAreaSelected();
 const resetArea = (): void => {
   areaSelected.value = '';
 };
+const resetAll = (): void => {
+  citySelected.value = '';
+  areaSelected.value = '';
+};
 
 </script>
 
@@ -68,7 +75,7 @@ select {
   border-radius: 8px;
   border: solid 1px #E6E6E6;
   appearance: none;
-  background-image: url('@/assets/images/selector/arrow-down.svg');
+  background-image: url('@/assets/images/arrow-down.svg');
   background-repeat: no-repeat;
   background-position: center right 12px;
   cursor: pointer;
