@@ -34,4 +34,12 @@ button {
     background-color: #171C2C;
   }
 }
+
+@media (max-width:480px) {
+  button {
+    span {
+      display: none;
+    }
+  }
+}
 </style>

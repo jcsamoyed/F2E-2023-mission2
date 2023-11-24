@@ -94,4 +94,19 @@ select {
     outline: none;
   }
 }
+
+@media (max-width:480px) {
+  section {
+    grid-gap: 8px;
+  }
+
+  .select-wrapper {
+    grid-gap: 8px;
+    flex-grow: 1;
+  }
+
+  select {
+    width: 100%;
+  }
+}
 </style>
