@@ -1,14 +1,26 @@
 <template>
   <section>
-    <!-- 縣市 -->
-    <select v-model="cityChoose">
-      <option value="" disabled>
-        請選擇
-      </option>
-      <option v-for="city in cityList" :key="city.CityEngName" :value="city.CityName">
-        {{ city.CityName }}
-      </option>
-    </select>
+    <div class="select-wrapper">
+      <!-- 縣市 -->
+      <select v-model="citySelected" @change="resetArea">
+        <option value="" disabled>
+          請選擇
+        </option>
+        <option v-for="city in cityList" :key="city.CityEngName" :value="city.CityName">
+          {{ city.CityName }}
+        </option>
+      </select>
+
+      <!-- 鄉鎮市區 -->
+      <select v-model="areaSelected">
+        <option value="" disabled>
+          請選擇
+        </option>
+        <option v-for="area in areaList" :key="area.AreaEngName" :value="area.AreaName">
+          {{ area.AreaName }}
+        </option>
+      </select>
+    </div>
   </section>
 </template>
 
@@ -17,11 +29,37 @@ import cityCountyData from '@/content/cityCountyData.json';
 
 // 縣市資料
 const cityList = reactive(cityCountyData);
-const cityChoose = ref('');
+const citySelected = useCitySelected();
+
+// 鄉鎮市區資料
+const areaList = computed(() => {
+  if (citySelected.value) {
+    return cityList.filter((item) => {
+      return item.CityName === citySelected.value;
+    })[0].AreaList;
+  }
+  return [];
+});
+const areaSelected = useAreaSelected();
+
+// 清除選項
+const resetArea = (): void => {
+  areaSelected.value = '';
+};
 
 </script>
 
 <style lang="scss" scoped>
+section {
+  display: flex;
+  grid-gap: 20px;
+}
+
+.select-wrapper {
+  display: flex;
+  grid-gap: 20px;
+}
+
 select {
   font-family: 'Noto Sans TC', sans-serif;
   font-size: 20px;
