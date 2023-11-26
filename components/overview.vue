@@ -1,6 +1,7 @@
 <template>
   <section>
     <h2>投票概況</h2>
+    <Chart1 />
   </section>
 </template>
 
@@ -17,6 +18,5 @@ section {
 h2 {
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 20px;
 }
 </style>
