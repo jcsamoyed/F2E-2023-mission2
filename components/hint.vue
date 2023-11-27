@@ -28,7 +28,7 @@ const hintList = reactive([
 
 <style lang="scss" scoped>
 section {
-  display: grid;
+  display: flex;
   flex-direction: column;
   grid-gap: 20px;
   width: 260px;
@@ -61,5 +61,13 @@ p {
 .hint {
   display: block;
   margin: 0 auto;
+}
+
+@media (max-width:1024px) {
+  section {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: scroll;
+  }
 }
 </style>
