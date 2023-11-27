@@ -94,8 +94,7 @@ const cityBgColor = computed(() => partyList.value[0].bgColor);
 
 <style lang="scss" scoped>
 section {
-  width: 25%;
-  max-width: 260px;
+  width: 260px;
   box-sizing: border-box;
   flex-shrink: 0;
 }

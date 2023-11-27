@@ -8,11 +8,11 @@
 
 <style lang="scss" scoped>
 section {
+  flex-shrink: 0;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  width: 25%;
-  max-width: 270px;
+  width: 270px;
   box-sizing: border-box;
 }
 

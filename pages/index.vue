@@ -21,7 +21,14 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  grid-gap: 152px;
+  grid-gap: 24px;
   margin: 40px 0;
+}
+
+@media (max-width:1024px) {
+  main {
+    flex-direction: column;
+    margin-top: 20px;
+  }
 }
 </style>

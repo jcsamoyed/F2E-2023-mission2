@@ -31,8 +31,7 @@ section {
   display: grid;
   flex-direction: column;
   grid-gap: 20px;
-  width: 25%;
-  max-width: 260px;
+  width: 260px;
   box-sizing: border-box;
 }
 
