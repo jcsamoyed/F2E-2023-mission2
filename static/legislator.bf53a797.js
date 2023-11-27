@@ -1,0 +1,1 @@
+import{_ as e,c as s,o as t,a as o}from"./entry.2856ff9e.js";const c={},a={class:"page"},n=o("div",{class:"container"}," legislator content ",-1),r=[n];function _(i,l){return t(),s("div",a,r)}const f=e(c,[["render",_]]);export{f as default};
