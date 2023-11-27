@@ -29,9 +29,10 @@ interface IPartyList {
   num: string,
   partyName: string;
   candidate: string;
-  votePercent: string;
+  votePercent: string | number;
   voteAmount: number,
   color: string,
+  bgColor?: string,
 }
 
 defineProps<{
@@ -44,7 +45,7 @@ defineProps<{
 ul {
   display: flex;
   flex-direction: column;
-  grid-gap: 8px;
+  grid-gap: 12px;
 }
 
 li {

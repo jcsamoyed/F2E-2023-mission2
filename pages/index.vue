@@ -5,11 +5,16 @@
       <main>
         <Overview />
         <Map />
-        <Hint />
+        <Hint v-if="!citySelected" />
+        <Dashboard v-else />
       </main>
     </div>
   </div>
 </template>
+
+<script lang="ts" setup>
+const citySelected = useCitySelected();
+</script>
 
 <style lang="scss" scoped>
 main {
