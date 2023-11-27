@@ -50,31 +50,23 @@ use([
 
 // 投票率資料
 const votePercentList = reactive(votePercentData);
-const citySelected = useCitySelected();
 const invalidAmount = ref(0); // 無效票數
 const validAmount = ref(0); // 有效票數
 const voteAmount = ref(0); // 投票數
 const votePeople = ref(0); // 選舉人數
 const votePercent = ref(0); // 投票率
 
+const cityObj = votePercentList.filter((item) => {
+  return item.city === '總計';
+})[0];
+
+invalidAmount.value = convertStringToNumber(cityObj.Column6);
+validAmount.value = convertStringToNumber(cityObj.Column5);
+voteAmount.value = convertStringToNumber(cityObj.Column7);
+votePeople.value = convertStringToNumber(cityObj.Column11);
+votePercent.value = Math.round(cityObj.Column12 * 10) / 10;
+
 const data = computed(() => {
-  let cityObj = {};
-  if (citySelected.value) {
-    cityObj = votePercentList.filter((item) => {
-      return item.city === citySelected.value;
-    })[0];
-  } else {
-    cityObj = votePercentList.filter((item) => {
-      return item.city === '總計';
-    })[0];
-  }
-
-  invalidAmount.value = convertStringToNumber(cityObj.Column6);
-  validAmount.value = convertStringToNumber(cityObj.Column5);
-  voteAmount.value = convertStringToNumber(cityObj.Column7);
-  votePeople.value = convertStringToNumber(cityObj.Column11);
-  votePercent.value = Math.round(cityObj.Column12 * 10) / 10;
-
   return [
     { value: voteAmount.value, name: '投票數', itemStyle: { color: '#262E49' } },
     { value: votePeople.value - voteAmount.value, name: '未投票數', itemStyle: { color: '#D9D9D9' } },
