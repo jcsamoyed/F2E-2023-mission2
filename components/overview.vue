@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="title-wrapper" :class="{ open: isShowContent }" @click="isShowContent = !isShowContent">
-      <h2>全國投票概況</h2>
+      <h2>{{ citySelected ? citySelected : '全國' }}投票概況</h2>
       <img src="@/assets/images/arrow-down.svg" class="arrow" alt="箭頭">
     </div>
     <div class="chart-wrapper" :class="{ open: isShowContent }">
@@ -13,6 +13,9 @@
 
 <script lang="ts" setup>
 const isShowContent = ref(false);
+
+// 所選縣市
+const citySelected = useCitySelected();
 </script>
 
 <style lang="scss" scoped>

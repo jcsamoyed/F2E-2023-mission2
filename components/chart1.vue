@@ -50,21 +50,26 @@ use([
 
 // 投票率資料
 const votePercentList = reactive(votePercentData);
-const invalidAmount = ref(0); // 無效票數
-const validAmount = ref(0); // 有效票數
-const voteAmount = ref(0); // 投票數
-const votePeople = ref(0); // 選舉人數
-const votePercent = ref(0); // 投票率
 
-const cityObj = votePercentList.filter((item) => {
-  return item.city === '總計';
-})[0];
+// 所選縣市
+const citySelected = useCitySelected();
 
-invalidAmount.value = convertStringToNumber(cityObj.Column6);
-validAmount.value = convertStringToNumber(cityObj.Column5);
-voteAmount.value = convertStringToNumber(cityObj.Column7);
-votePeople.value = convertStringToNumber(cityObj.Column11);
-votePercent.value = Math.round(cityObj.Column12 * 10) / 10;
+const cityObj = computed(() => {
+  if (citySelected.value) {
+    return votePercentList.filter((item) => {
+      return item.city === citySelected.value;
+    })[0];
+  }
+  return votePercentList.filter((item) => {
+    return item.city === '總計';
+  })[0];
+});
+
+const invalidAmount = computed(() => convertStringToNumber(cityObj.value.Column6));
+const validAmount = computed(() => convertStringToNumber(cityObj.value.Column5));
+const voteAmount = computed(() => convertStringToNumber(cityObj.value.Column7));
+const votePeople = computed(() => convertStringToNumber(cityObj.value.Column11));
+const votePercent = computed(() => Math.round(cityObj.value.Column12 * 10) / 10);
 
 const data = computed(() => {
   return [
