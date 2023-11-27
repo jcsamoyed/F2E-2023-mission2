@@ -1,7 +1,8 @@
 <template>
   <section>
-    <h2>投票概況</h2>
+    <h2>全國投票概況</h2>
     <Chart1 />
+    <Chart2 />
   </section>
 </template>
 

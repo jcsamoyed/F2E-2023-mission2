@@ -1,15 +1,17 @@
 [
   {
     "city": "行政區別",
-    "Column2": "各組候選人得票情形",
-    "Column5": "有效票數A\nA=1+2+...+N",
+    "Column2": "(1)宋楚瑜/余湘",
+    "Column3": "(2)韓國瑜/張善政",
+    "Column4": "(3)蔡英文/賴清德",
+    "Column5": "有效票數A",
     "Column6": "無效票數B",
-    "Column7": "投票數C\nC=A+B",
-    "Column8": "已領未投票數\nD\nD=E-C",
-    "Column9": "發出票數E\nE=C+D",
+    "Column7": "投票數C",
+    "Column8": "已領未投票數D",
+    "Column9": "發出票數E",
     "Column10": "用餘票數F",
-    "Column11": "選舉人數G\nG=E+F",
-    "Column12": "投票率H\nH=C÷G"
+    "Column11": "選舉人數G",
+    "Column12": "投票率H"
   },
   {
     "city": "總計",
