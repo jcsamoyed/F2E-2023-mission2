@@ -70,11 +70,13 @@ section {
 select {
   font-family: 'Noto Sans TC', sans-serif;
   font-size: 20px;
+  color: #000;
   padding: 4px 12px;
   width: 156px;
   border-radius: 8px;
   border: solid 1px #E6E6E6;
   appearance: none;
+  background-color: #fff;
   background-image: url('@/assets/images/arrow-down.svg');
   background-repeat: no-repeat;
   background-position: center right 12px;
