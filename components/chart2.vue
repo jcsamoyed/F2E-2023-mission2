@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="chart">
     <client-only>
-      <v-chart class="chart" :option="option" style="width: 120px;height:120px;" :auto-resize="true" />
+      <v-chart class="pie" :option="option" style="width: 120px;height:120px;" :auto-resize="true" />
     </client-only>
     <PartyList :party-list="partyList" />
   </div>
@@ -104,7 +104,15 @@ const option = ref({
 </script>
 
 <style lang="scss" scoped>
-.chart {
+.pie {
   margin-top: 20px;
+}
+
+@media (max-width:1024px) {
+  .chart {
+    display: flex;
+    align-items: center;
+    grid-gap: 12px;
+  }
 }
 </style>

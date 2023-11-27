@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="chart">
     <div class="pie-row">
       <client-only>
-        <v-chart class="chart" :option="option" style="width: 120px;height:120px;" :auto-resize="true" />
+        <v-chart :option="option" style="width: 120px;height:120px;" :auto-resize="true" />
       </client-only>
       <p class="pie-title">
         <span>{{ votePercent }}%</span>
@@ -129,6 +129,15 @@ li {
   span {
     font-size: 12px;
     font-weight: 600;
+  }
+}
+
+@media (max-width:1024px) {
+  .chart {
+    display: flex;
+    align-items: center;
+    grid-gap: 12px;
+    margin-bottom: 20px;
   }
 }
 </style>
