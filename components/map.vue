@@ -169,7 +169,7 @@
 // 所選縣市
 const citySelected = useCitySelected();
 
-const switchCity = (event:any) => {
+const switchCity = (event: any) => {
   citySelected.value = event.currentTarget.getAttribute('data-name');
 };
 </script>
@@ -194,6 +194,13 @@ g {
     path {
       fill: #262E49;
     }
+  }
+}
+
+@media (max-width:1024px) {
+  section {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 </style>
