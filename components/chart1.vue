@@ -76,8 +76,8 @@ const data = computed(() => {
   votePercent.value = Math.round(cityObj.Column12 * 10) / 10;
 
   return [
-    { value: votePeople.value - voteAmount.value, name: '未投票數', itemStyle: { color: '#D9D9D9' } },
     { value: voteAmount.value, name: '投票數', itemStyle: { color: '#262E49' } },
+    { value: votePeople.value - voteAmount.value, name: '未投票數', itemStyle: { color: '#D9D9D9' } },
   ];
 });
 
