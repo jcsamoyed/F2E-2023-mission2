@@ -72,9 +72,12 @@ h2 {
 
   .chart-wrapper {
     height: 0;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    transition-duration: .2s;
 
     &.open {
+      padding-top: 20px;
       height: unset;
     }
   }

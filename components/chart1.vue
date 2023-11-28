@@ -2,7 +2,7 @@
   <div class="chart">
     <div class="pie-row">
       <client-only>
-        <v-chart :option="option" style="width: 120px;height:120px;" :auto-resize="true" />
+        <v-chart :option="option" class="pie" :auto-resize="true" />
       </client-only>
       <p class="pie-title">
         <span>{{ votePercent }}%</span>
@@ -109,6 +109,11 @@ const option = ref({
   align-items: center;
 }
 
+.pie {
+  width: 120px;
+  height: 120px;
+}
+
 .pie-title {
   flex-shrink: 0;
   text-align: center;
@@ -119,6 +124,10 @@ const option = ref({
     font-weight: 600;
     margin-bottom: 4px;
   }
+}
+
+ul {
+  flex-shrink: 0;
 }
 
 li {
@@ -138,11 +147,17 @@ li {
 }
 
 @media (max-width:1024px) {
+  .pie {
+    width: 100px;
+    height: 100px;
+    margin-left: -10px;
+  }
+
   .chart {
     display: flex;
     align-items: center;
     grid-gap: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 }
 </style>
