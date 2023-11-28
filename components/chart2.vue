@@ -31,17 +31,25 @@ use([
 
 // 政黨得票數資料
 const votePercentList = reactive(votePercentData);
-const PFPAmount = ref(0); // 親民黨得票數
-const KMTAmount = ref(0); // 國民黨得票數
-const DPPAmount = ref(0); // 民進黨得票數
 
-const cityObj = votePercentList.filter((item) => {
-  return item.city === '總計';
-})[0];
+// 所選縣市
+const citySelected = useCitySelected();
 
-PFPAmount.value = convertStringToNumber(cityObj.Column2);
-KMTAmount.value = convertStringToNumber(cityObj.Column3);
-DPPAmount.value = convertStringToNumber(cityObj.Column4);
+const cityObj = computed(() => {
+  if (citySelected.value) {
+    return votePercentList.filter((item) => {
+      return item.city === citySelected.value;
+    })[0];
+  }
+  return votePercentList.filter((item) => {
+    return item.city === '總計';
+  })[0];
+});
+
+const PFPAmount = computed(() => convertStringToNumber(cityObj.value.Column2));
+const KMTAmount = computed(() => convertStringToNumber(cityObj.value.Column3));
+const DPPAmount = computed(() => convertStringToNumber(cityObj.value.Column4));
+const validAmount = computed(() => convertStringToNumber(cityObj.value.Column5));
 
 const data = computed(() => {
   return [
@@ -52,32 +60,34 @@ const data = computed(() => {
 });
 
 // partyList
-const partyList = reactive([
-  {
-    num: '3',
-    partyName: '民主進步黨',
-    candidate: '蔡英文｜賴清德',
-    votePercent: '57.13',
-    voteAmount: DPPAmount.value,
-    color: '#84CB98',
-  },
-  {
-    num: '2',
-    partyName: '中國國民黨',
-    candidate: '韓國瑜｜張善政',
-    votePercent: '38.61',
-    voteAmount: KMTAmount.value,
-    color: '#8894D8',
-  },
-  {
-    num: '1',
-    partyName: '親民黨',
-    candidate: '宋楚瑜｜余湘',
-    votePercent: '4.26',
-    voteAmount: PFPAmount.value,
-    color: '#DFA175',
-  },
-]);
+const partyList = computed(() => {
+  return [
+    {
+      num: '3',
+      partyName: '民主進步黨',
+      candidate: '蔡英文｜賴清德',
+      votePercent: Math.round(DPPAmount.value / validAmount.value * 100 * 100) / 100,
+      voteAmount: DPPAmount.value,
+      color: '#84CB98',
+    },
+    {
+      num: '2',
+      partyName: '中國國民黨',
+      candidate: '韓國瑜｜張善政',
+      votePercent: Math.round(KMTAmount.value / validAmount.value * 100 * 100) / 100,
+      voteAmount: KMTAmount.value,
+      color: '#8894D8',
+    },
+    {
+      num: '1',
+      partyName: '親民黨',
+      candidate: '宋楚瑜｜余湘',
+      votePercent: Math.round(PFPAmount.value / validAmount.value * 100 * 100) / 100,
+      voteAmount: PFPAmount.value,
+      color: '#DFA175',
+    },
+  ];
+});
 
 // Vue-Echarts
 const option = ref({
